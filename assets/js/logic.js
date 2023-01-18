@@ -80,3 +80,48 @@ function startQuiz() {
   
   displayQuestions(question);
         
+  function checkAnswer(event) {
+    // check if answer is correct
+    const selected = event.target;
+    if (!selected.classList.contains("choice")) {
+    return;
+    }
+    const correct = selected.textContent === questions[currentQuestion].answer;
+    
+    // display feedback
+    feedback.classList.remove("hide");
+    if (correct) {
+    feedback.textContent = "Correct!";
+    score++;
+    } else {
+    feedback.textContent = "Incorrect!";
+    time -= 10; // subtract time for incorrect answer
+    }
+    
+    // move to next question
+    currentQuestion++;
+    if (currentQuestion === questions.length) {
+    endQuiz();
+    } else {
+    loadQuestion();
+    }
+    }
+    function endQuiz() {
+        // hide questions
+        questionsDiv.classList.add("hide");
+        
+        // show end screen
+        endScreen.classList.remove("hide");
+        
+        // set final score
+        finalScore.textContent = score;
+        }
+        
+        function saveScore() {
+        // get initials
+        const initials = initialsInput.value;
+        
+        // save score
+        localStorage.setItem("initials") };
+        
+        
