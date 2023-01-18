@@ -37,3 +37,46 @@ function startQuiz() {
     questionsDiv.classList.remove("hide");
     loadQuestion();
     }
+
+    // function loadQuestion() {
+        // // reset feedback
+        // feedback.classList.add("hide");
+        // feedback.textContent = "";
+        
+        // // get current question
+        // const current = questions[currentQuestion];
+        
+        // // set question title
+        // questionTitle.textContent = current.title;
+        
+        // // clear previous choices
+        // choicesDiv.innerHTML = "";
+        
+        // // load choices
+        // current.choices.forEach(function(choice) {
+        // const button = document.createElement("button");
+        // button.classList.add("choice");
+        // button.textContent = choice;
+        // choicesDiv.appendChild(button);
+        // });
+        // }
+        function displayQuestions(questions) {
+            let currentQuestion = 0;
+            let title = document.getElementById("question-title");
+            let choices = document.getElementById("choices");
+          
+            function showQuestion() {
+              title.innerHTML = questions[currentQuestion].title;
+              choices.innerHTML = "";
+              for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
+                let choice = document.createElement("div");
+                choice.innerHTML = questions[currentQuestion].choices[i];
+                choice.addEventListener("click", checkAnswer);
+                choices.appendChild(choice);
+              }
+            }
+            showQuestion(); 
+  }
+  
+  displayQuestions(question);
+        
