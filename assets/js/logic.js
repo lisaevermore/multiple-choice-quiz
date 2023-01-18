@@ -18,3 +18,22 @@ const timer = document.getElementById("time");
 startButton.addEventListener("click", startQuiz);
 choicesDiv.addEventListener("click", checkAnswer);
 submitButton.addEventListener("click", saveScore);
+
+// Functions
+function startQuiz() {
+    // hide start screen
+    startButton.parentElement.classList.add("hide");
+    
+    // start timer
+    setInterval(function() {
+    time--;
+    timer.textContent = time;
+    if (time === 0) {
+    endQuiz();
+    }
+    }, 1000);
+    
+    // show questions
+    questionsDiv.classList.remove("hide");
+    loadQuestion();
+    }
