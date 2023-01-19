@@ -14,6 +14,8 @@ const submitButton = document.getElementById("submit");
 const feedback = document.getElementById("feedback");
 const timer = document.getElementById("time");
 
+
+
 // Event listeners
 startButton.addEventListener("click", startQuiz);
 choicesDiv.addEventListener("click", checkAnswer);
@@ -34,53 +36,35 @@ function startQuiz() {
     }, 1000);
     
     // show questions
-    questionsDiv.classList.remove("hide");
-    loadQuestion();
-    }
-
-    // function loadQuestion() {
-        // // reset feedback
-        // feedback.classList.add("hide");
-        // feedback.textContent = "";
-        
-        // // get current question
-        // const current = questions[currentQuestion];
-        
-        // // set question title
-        // questionTitle.textContent = current.title;
-        
-        // // clear previous choices
-        // choicesDiv.innerHTML = "";
-        
-        // // load choices
-        // current.choices.forEach(function(choice) {
-        // const button = document.createElement("button");
-        // button.classList.add("choice");
-        // button.textContent = choice;
-        // choicesDiv.appendChild(button);
-        // });
-        // }
-        function displayQuestions(questions) {
-            let currentQuestion = 0;
-            let title = document.getElementById("question-title");
-            let choices = document.getElementById("choices");
-          
-            function showQuestion() {
-              title.innerHTML = questions[currentQuestion].title;
-              choices.innerHTML = "";
-              for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
-                let choice = document.createElement("div");
-                choice.innerHTML = questions[currentQuestion].choices[i];
-                choice.addEventListener("click", checkAnswer);
-                choices.appendChild(choice);
-              }
-            }
-            showQuestion(); 
+     questionsDiv.classList.remove("hide");
+    displayQuestions();
+    // 
   }
-  
-  displayQuestions(question);
-        
-  function checkAnswer(event) {
+
+
+function displayQuestions(questions) {
+      let currentQuestion = 0;
+      let title = document.getElementById("question-title");
+      let choices = document.getElementById("choices");
+      //console.log(choices);
+              function showQuestion() {
+                title.innerHTML = questions[currentQuestion].title;
+                  choices.innerHTML = "";
+                  for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
+                    let choice = document.createElement("div");
+                    choice.innerHTML = questions[currentQuestion].choices[i];
+                    let button = document.createElement("button");
+                    button.textContent = questions[currentQuestion].choices[i];
+                    choice.addEventListener("click", checkAnswer);
+                    choices.appendChild(choice);
+                  }
+                }
+   showQuestion(); 
+}
+      
+ displayQuestions(question);
+
+    function checkAnswer(event) {
     // check if answer is correct
     const selected = event.target;
     if (!selected.classList.contains("choice")) {
@@ -115,13 +99,13 @@ function startQuiz() {
         
         // set final score
         finalScore.textContent = score;
-        }
+    }
         
-        function saveScore() {
-        // get initials
-        const initials = initialsInput.value;
-        
-        // save score
-        localStorage.setItem("initials") };
-        
-        
+    function saveScore() {
+      // get initials
+      const initials = initialsInput.value;
+      
+      // save score
+      localStorage.setItem("initials") 
+    }
+
