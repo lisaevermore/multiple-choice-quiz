@@ -43,18 +43,19 @@ function startQuiz() {
 
 
 function displayQuestions(questions) {
-      let currentQuestion = 0;
+      // let currentQuestion = 0;
       let title = document.getElementById("question-title");
       let choices = document.getElementById("choices");
       //console.log(choices);
               function showQuestion() {
                 title.innerHTML = questions[currentQuestion].title;
+                //console.log(title);
                   choices.innerHTML = "";
                   for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
-                    let choice = document.createElement("div");
-                    choice.innerHTML = questions[currentQuestion].choices[i];
                     let button = document.createElement("button");
                     button.textContent = questions[currentQuestion].choices[i];
+                    let choice = document.createElement("div");
+                    choice.innerHTML = questions[currentQuestion].choices[i];
                     choice.addEventListener("click", checkAnswer);
                     choices.appendChild(choice);
                   }
